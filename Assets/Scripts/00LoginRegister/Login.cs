@@ -24,7 +24,7 @@ public class Login : MonoBehaviour
 
     public void LoginOnClick()
     {
-               
+        StartCoroutine(AsyncLogin());      
     }
 
     public void LoginInput()
@@ -38,6 +38,7 @@ public class Login : MonoBehaviour
         _asyncText.text = "Login";
         _loginBase.LoginUsername(_usernameField.text, _passwordField.text);
         yield return new WaitUntil(() => _loginBase.LoginBase_Async);
+        SceneManager.LoadScene(1);
 
     }
 }
