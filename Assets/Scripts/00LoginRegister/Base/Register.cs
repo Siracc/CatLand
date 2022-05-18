@@ -19,7 +19,7 @@ public class Register : MonoBehaviour
     [SerializeField] Button _registerButton;
 
     [Header("Default Avatar")]
-    public string _imageSize = "250", _avatarURL;
+    public string  _avatarURL;
 
 
     private void Awake()
