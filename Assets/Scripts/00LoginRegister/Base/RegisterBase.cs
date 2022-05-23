@@ -11,24 +11,23 @@ public class RegisterBase
 
     public void RegisterEmail(string _username, string _email, string _password)
     {
-        PlayFabClientAPI.RegisterPlayFabUser(new RegisterPlayFabUserRequest
+        PlayFabClientAPI.RegisterPlayFabUser(new RegisterPlayFabUserRequest()
         {
             Username = _username,
             Email = _email,
             Password = _password,
             DisplayName = _username
         },
-        result =>
-        {
-            RegisterBase_Async = true;
-        },
-        error =>
-        {
-            RegisterBase_Async = false;
-            SceneManager.LoadScene(0);
-            Debug.Log(error.ErrorMessage);
-        });
 
-
+            Result =>
+            {
+                RegisterBase_Async = true;
+                Debug.Log("Kayýt Tamamlandý");
+            },
+            Error =>
+            {
+                RegisterBase_Async = false;
+                Debug.Log("Kayýt Hatasý !!!!!!!!!!");
+            });
     }
 }

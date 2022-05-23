@@ -8,37 +8,39 @@ using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
-    InputController _inputController;
-    LoginBase _loginBase;
+    #region Preference Class
 
-    [SerializeField] InputField _usernameField, _passwordField;
-    [SerializeField] Text _asyncText;
-    [SerializeField] Button _loginButton;
-    [SerializeField] GameObject _asyncPanel;
+    private LoginBase _loginBase = new LoginBase();
+    private InputController _inputController = new InputController();
 
-    private void Awake()
-    {
-        _inputController = new InputController();
-        _loginBase = new LoginBase();
-    }
+    #endregion Preference Class
+
+    [SerializeField] private InputField _username, _password;
+    [SerializeField] private GameObject _aSencPanel;
+    [SerializeField] private Text _asencText;
+    [SerializeField] private Button _loginButton;
 
     public void LoginOnClick()
     {
-        StartCoroutine(AsyncLogin());      
+        StartCoroutine(ASencLogin());
     }
 
-    public void LoginInput()
+    public void LoginInputController()
     {
-        _inputController.LoginPanel(_usernameField, _passwordField, _loginButton);
+        _inputController.LoginInputControl(_username, _password, _loginButton);
     }
 
-    IEnumerator AsyncLogin()
+    private IEnumerator ASencLogin()
     {
-        _asyncPanel.SetActive(true);
-        _asyncText.text = "Login";
-        _loginBase.LoginUsername(_usernameField.text, _passwordField.text);
+        _aSencPanel.SetActive(true);
+        _asencText.text = "Giriþ Yapýlýyor";
+        _loginBase.LoginUsername(_username.text, _password.text);
         yield return new WaitUntil(() => _loginBase.LoginBase_Async);
         SceneManager.LoadScene(1);
-
     }
+
+    //public void LoginGuestOnClick()
+    //{
+    //    _loginBase.LoginGuest();
+    //}
 }
