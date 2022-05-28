@@ -11,5 +11,9 @@ public class PlayerDead : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+        if (collision.gameObject.CompareTag("Gulle"))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }

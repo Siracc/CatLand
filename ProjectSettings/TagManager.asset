@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Fire
   - Stairs
+  - Obstacle
+  - Forground
+  - Gulle
   layers:
   - Default
   - TransparentFX
